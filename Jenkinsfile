@@ -69,7 +69,7 @@ pipeline {
                     steps {
                         echo 'Integration Testing...'
                         sh '''
-                            npm run test:integration
+                            npm test
                         '''
                     }
                 }
