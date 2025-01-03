@@ -15,7 +15,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building new laptop...'
+                echo 'Building...'
+                sh '''
+                    ls -la
+                    node --version
+                '''
             }
         }
 
