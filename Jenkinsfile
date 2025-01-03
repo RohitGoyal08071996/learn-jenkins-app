@@ -6,12 +6,12 @@ pipeline {
     }
 
     stages {
-        stage('Cleanup') {
-            steps {
-                echo 'Cleaning workspace...'
-                cleanWs()
-            }
-        }
+        // stage('Cleanup') {
+        //     steps {
+        //         echo 'Cleaning workspace...'
+        //         cleanWs()
+        //     }
+        // }
 
         stage('Build') {
             agent {
