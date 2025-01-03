@@ -41,6 +41,40 @@ pipeline {
                 '''
             }
         }
+
+        stage('Parallel Tests') {
+            parallel {
+                stage('Unit Test') {
+                    agent {
+                        docker {
+                            image 'node:23-alpine3.20'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        echo 'Unit Testing...'
+                        sh '''
+                            npm test
+                        '''
+                    }
+                }
+
+                stage('Integration Test') {
+                    agent {
+                        docker {
+                            image 'node:23-alpine3.20'
+                            reuseNode true
+                        }
+                    }
+                    steps {
+                        echo 'Integration Testing...'
+                        sh '''
+                            npm run test:integration
+                        '''
+                    }
+                }
+            }
+        }
     }
 
     post {
